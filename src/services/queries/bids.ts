@@ -22,7 +22,7 @@ export const createBid = async (attrs: CreateBidAttrs) => {
        attrs.amount,
        attrs.createdAt.toMillis(),
     );
-    
+
     return Promise.all([
       lockedClient.rPush(bidHistoryKey(attrs.itemId), serialized),
       lockedClient.hSet(itemsKey(item.id), {
